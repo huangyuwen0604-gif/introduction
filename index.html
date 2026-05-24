@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>職業海報互動遊戲</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">成果發表會</p>
+        <h1>職業海報互動遊戲</h1>
+      </div>
+      <nav class="tabs" aria-label="頁面切換">
+        <button class="tab is-active" data-view="game">遊戲</button>
+        <button class="tab" data-view="gallery">海報</button>
+        <button class="tab" data-view="board">榜單</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view is-active" id="game-view">
+        <div class="game-shell">
+          <section class="spotlight" aria-live="polite">
+            <div class="poster-stage">
+              <img id="quiz-poster" src="" alt="" />
+              <div class="poster-mask" id="poster-mask">?</div>
+            </div>
+            <div class="question-panel">
+              <p class="round-label" id="round-label">Round 1 / 10</p>
+              <h2 id="question-title">這張海報介紹哪一種職業？</h2>
+              <div class="answers" id="answers"></div>
+              <div class="result" id="result"></div>
+              <div class="actions">
+                <button class="primary" id="start-btn">開始遊戲</button>
+                <button id="next-btn" disabled>下一題</button>
+                <button id="mission-btn">抽任務</button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="score-panel">
+            <div class="stat">
+              <span>得分</span>
+              <strong id="score">0</strong>
+            </div>
+            <div class="stat">
+              <span>連勝</span>
+              <strong id="streak">0</strong>
+            </div>
+            <div class="mission">
+              <span>今日任務</span>
+              <p id="mission-text">點「抽任務」開始一個現場挑戰。</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="gallery-view">
+        <div class="gallery-head">
+          <div>
+            <p class="eyebrow">Poster Wall</p>
+            <h2>海報展示牆</h2>
+          </div>
+          <input id="search" type="search" placeholder="搜尋姓名或職業" />
+        </div>
+        <div class="poster-grid" id="poster-grid"></div>
+      </section>
+
+      <section class="view" id="board-view">
+        <div class="board-layout">
+          <section class="leaderboard">
+            <div>
+              <p class="eyebrow">Leaderboard</p>
+              <h2>隊伍榜單</h2>
+            </div>
+            <form id="score-form">
+              <input id="team-name" maxlength="18" placeholder="隊伍名稱" />
+              <button class="primary" type="submit">登錄分數</button>
+            </form>
+            <ol id="leaderboard-list"></ol>
+          </section>
+          <section class="host-card">
+            <p class="eyebrow">Host Mode</p>
+            <h2>主持人控制台</h2>
+            <button id="reset-score">重設本輪分數</button>
+            <button id="clear-board">清空榜單</button>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="poster-dialog">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow" id="dialog-owner"></p>
+          <h2 id="dialog-title"></h2>
+        </div>
+        <button class="icon-button" id="close-dialog" aria-label="關閉">×</button>
+      </div>
+      <iframe id="poster-frame" title="完整海報"></iframe>
+      <a id="poster-link" target="_blank" rel="noreferrer">開啟 PDF</a>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
